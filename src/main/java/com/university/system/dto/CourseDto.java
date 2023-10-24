@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -19,5 +18,4 @@ public class CourseDto {
 
     private String description;
 
-//    private Set<StudentDto> students;
 }
