@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="16701734928552" author="Rahaf">
+        <createTable tableName="course">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_address"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
+        <createTable tableName="student">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_address"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+        <changeSet id="167017349285533" author="Rahaf">
+        <createTable tableName="course_student">
+            <column name="course_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_course_student"/>
+            </column>
+            <column name="student_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_course_student"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="167017349285534" author="Rahaf">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="course_student"
+                                 constraintName="fk_course" referencedColumnNames="id"
+                                 referencedTableName="course"/>
+    </changeSet>
+    <changeSet id="167017349285535" author="Rahaf">
+        <addForeignKeyConstraint baseColumnNames="student_id" baseTableName="course_student" constraintName="fk_student"
+                                 referencedColumnNames="id" referencedTableName="student"/>
+    </changeSet>
+</databaseChangeLog>
